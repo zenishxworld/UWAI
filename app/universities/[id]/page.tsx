@@ -69,7 +69,7 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-secondary-50">
+            <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
                 <Navbar />
                 <div className="pt-32 flex justify-center"><LoadingSpinner size="lg" /></div>
             </div>
@@ -82,24 +82,24 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
     const ms = university.matchScore;
 
     return (
-        <div className="min-h-screen bg-secondary-50">
+        <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Navbar />
 
             <div className="pt-24 pb-12">
                 <div className="container-custom">
                     {/* Breadcrumb */}
-                    <div className="mb-6 flex items-center text-sm text-secondary-500">
-                        <Link href="/universities" className="hover:text-primary-600 transition-colors">Universities</Link>
+                    <div className="mb-6 flex items-center text-sm" style={{ color: 'var(--text-muted)' }}>
+                        <Link href="/universities" className="hover:opacity-80 transition-opacity">Universities</Link>
                         <span className="mx-2">/</span>
-                        <span className="text-secondary-900 font-medium">{university.name}</span>
+                        <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{university.name}</span>
                     </div>
 
                     {/* Header */}
                     <div className="card mb-8">
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                             <div className="flex-1">
-                                <h1 className="text-3xl font-bold text-secondary-900 mb-2">{university.name}</h1>
-                                <div className="flex flex-wrap items-center gap-3 text-secondary-600 mb-4">
+                                <h1 className="text-3xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>{university.name}</h1>
+                                <div className="flex flex-wrap items-center gap-3 mb-4" style={{ color: 'var(--text-secondary)' }}>
                                     <span className="flex items-center">
                                         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -110,7 +110,7 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                                     {university.scholarship_available && <span className="badge badge-success">Scholarships</span>}
                                 </div>
                                 {university.description && (
-                                    <p className="text-secondary-600 mb-6">{university.description}</p>
+                                    <p className="mb-6" style={{ color: 'var(--text-secondary)' }}>{university.description}</p>
                                 )}
                                 <div className="flex flex-wrap gap-3">
                                     <button
@@ -150,21 +150,21 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                                 <h2 className="text-xl font-bold mb-4">Key Information</h2>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                                     <div>
-                                        <p className="text-sm text-secondary-500 mb-1">Tuition Fee</p>
-                                        <p className="text-xl font-bold text-secondary-900">${university.tuition_fee?.toLocaleString()}</p>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Tuition Fee</p>
+                                        <p className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>${university.tuition_fee?.toLocaleString()}</p>
                                         <p className="text-xs text-secondary-400">per year</p>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-secondary-500 mb-1">Living Cost</p>
-                                        <p className="text-xl font-bold text-secondary-900">${university.living_cost?.toLocaleString()}</p>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Living Cost</p>
+                                        <p className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>${university.living_cost?.toLocaleString()}</p>
                                         <p className="text-xs text-secondary-400">per year</p>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-secondary-500 mb-1">Total Annual Cost</p>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Total Annual Cost</p>
                                         <p className="text-xl font-bold text-primary-600">${totalCost.toLocaleString()}</p>
                                     </div>
                                     <div>
-                                        <p className="text-sm text-secondary-500 mb-1">Avg Salary</p>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Avg Salary</p>
                                         <p className="text-xl font-bold text-green-600">${university.average_salary?.toLocaleString()}</p>
                                         <p className="text-xs text-secondary-400">after graduation</p>
                                     </div>
@@ -175,22 +175,22 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                             <div className="card">
                                 <h2 className="text-xl font-bold mb-4">Admission Requirements</h2>
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                    <div className="bg-secondary-50 rounded-lg p-4 text-center">
-                                        <p className="text-sm text-secondary-500 mb-1">Min CGPA</p>
-                                        <p className="text-2xl font-bold text-secondary-900">{university.minimum_cgpa}</p>
+                                    <div className="rounded-lg p-4 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Min CGPA</p>
+                                        <p className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{university.minimum_cgpa}</p>
                                     </div>
-                                    <div className="bg-secondary-50 rounded-lg p-4 text-center">
-                                        <p className="text-sm text-secondary-500 mb-1">Min IELTS</p>
-                                        <p className="text-2xl font-bold text-secondary-900">{university.required_ielts}</p>
+                                    <div className="rounded-lg p-4 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Min IELTS</p>
+                                        <p className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{university.required_ielts}</p>
                                     </div>
-                                    <div className="bg-secondary-50 rounded-lg p-4 text-center">
-                                        <p className="text-sm text-secondary-500 mb-1">Acceptance Rate</p>
-                                        <p className="text-2xl font-bold text-secondary-900">{university.acceptance_rate}%</p>
+                                    <div className="rounded-lg p-4 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Acceptance Rate</p>
+                                        <p className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{university.acceptance_rate}%</p>
                                     </div>
-                                    <div className="bg-secondary-50 rounded-lg p-4 text-center">
-                                        <p className="text-sm text-secondary-500 mb-1">Visa Difficulty</p>
+                                    <div className="rounded-lg p-4 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                        <p className="text-sm mb-1" style={{ color: 'var(--text-muted)' }}>Visa Difficulty</p>
                                         <p className={`text-2xl font-bold capitalize ${university.visa_difficulty === 'low' ? 'text-green-600' :
-                                                university.visa_difficulty === 'medium' ? 'text-yellow-600' : 'text-red-600'
+                                            university.visa_difficulty === 'medium' ? 'text-yellow-600' : 'text-red-600'
                                             }`}>{university.visa_difficulty}</p>
                                     </div>
                                 </div>
@@ -202,13 +202,13 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                                     <h2 className="text-xl font-bold mb-4">Available Programs</h2>
                                     <div className="space-y-3">
                                         {university.programs.map((prog: any) => (
-                                            <div key={prog.id} className="flex items-center justify-between bg-secondary-50 rounded-lg p-4">
+                                            <div key={prog.id} className="flex items-center justify-between rounded-lg p-4" style={{ backgroundColor: 'var(--glass-bg)' }}>
                                                 <div>
-                                                    <p className="font-medium text-secondary-900">{prog.name}</p>
-                                                    <p className="text-sm text-secondary-500 capitalize">{prog.degree_level} • {prog.duration_years} years</p>
+                                                    <p className="font-medium" style={{ color: 'var(--text-primary)' }}>{prog.name}</p>
+                                                    <p className="text-sm capitalize" style={{ color: 'var(--text-muted)' }}>{prog.degree_level} • {prog.duration_years} years</p>
                                                 </div>
                                                 {prog.tuition_fee && (
-                                                    <p className="font-semibold text-secondary-900">${prog.tuition_fee.toLocaleString()}/yr</p>
+                                                    <p className="font-semibold" style={{ color: 'var(--text-primary)' }}>${prog.tuition_fee.toLocaleString()}/yr</p>
                                                 )}
                                             </div>
                                         ))}
@@ -242,7 +242,7 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                                         ))}
                                     </div>
                                     <div className="mt-4 pt-4 border-t border-secondary-200">
-                                        <p className="text-sm text-secondary-500">Break-even: <strong>{ms.breakdown.breakEvenYears} years</strong></p>
+                                        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>Break-even: <strong>{ms.breakdown.breakEvenYears} years</strong></p>
                                     </div>
                                 </div>
                             )}
@@ -253,7 +253,7 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                                     <h2 className="text-xl font-bold mb-4">Admit Statistics</h2>
                                     <div className="space-y-3">
                                         <div className="flex justify-between">
-                                            <span className="text-secondary-600">Total Reports</span>
+                                            <span style={{ color: 'var(--text-secondary)' }}>Total Reports</span>
                                             <span className="font-bold">{university.admitStats.total}</span>
                                         </div>
                                         <div className="flex justify-between">
@@ -266,7 +266,7 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                                         </div>
                                         {university.admitStats.avgCgpa && (
                                             <div className="flex justify-between">
-                                                <span className="text-secondary-600">Avg CGPA (Admitted)</span>
+                                                <span style={{ color: 'var(--text-secondary)' }}>Avg CGPA (Admitted)</span>
                                                 <span className="font-bold">{university.admitStats.avgCgpa}</span>
                                             </div>
                                         )}

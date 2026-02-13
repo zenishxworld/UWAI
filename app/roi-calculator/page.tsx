@@ -100,27 +100,29 @@ export default function ROICalculatorPage() {
     const uniBName = universities.find(u => u.id === parseInt(selectedUniB))?.name || 'University B';
 
     return (
-        <div className="min-h-screen bg-secondary-50">
+        <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Navbar />
 
             <div className="pt-24 pb-12">
                 <div className="container-custom">
                     <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-secondary-900 mb-2">ROI Calculator</h1>
-                        <p className="text-secondary-600">Compare financial outcomes with break-even analysis and 5-year projections</p>
+                        <h1 className="text-4xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>ROI Calculator</h1>
+                        <p style={{ color: 'var(--text-secondary)' }}>Compare financial outcomes with break-even analysis and 5-year projections</p>
                     </div>
 
                     {/* Mode Toggle */}
                     <div className="flex gap-2 mb-6">
                         <button
                             onClick={() => { setMode('single'); setResult(null); }}
-                            className={`px-6 py-2 rounded-lg font-medium transition-all ${mode === 'single' ? 'bg-primary-600 text-white' : 'bg-white text-secondary-600 border border-secondary-300 hover:border-primary-300'}`}
+                            className={`px-6 py-2 rounded-lg font-medium transition-all ${mode === 'single' ? 'bg-primary-600 text-white' : 'border hover:border-primary-300'}`}
+                            style={mode !== 'single' ? { backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', borderColor: 'var(--border-color)' } : undefined}
                         >
                             Single Analysis
                         </button>
                         <button
                             onClick={() => { setMode('compare'); setResult(null); }}
-                            className={`px-6 py-2 rounded-lg font-medium transition-all ${mode === 'compare' ? 'bg-primary-600 text-white' : 'bg-white text-secondary-600 border border-secondary-300 hover:border-primary-300'}`}
+                            className={`px-6 py-2 rounded-lg font-medium transition-all ${mode === 'compare' ? 'bg-primary-600 text-white' : 'border hover:border-primary-300'}`}
+                            style={mode !== 'compare' ? { backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', borderColor: 'var(--border-color)' } : undefined}
                         >
                             Compare Two
                         </button>
@@ -186,7 +188,7 @@ export default function ROICalculatorPage() {
                                 {/* University A Results */}
                                 <div className="card">
                                     <h2 className="text-xl font-bold mb-1">{mode === 'compare' ? uniAName : 'Financial Analysis'}</h2>
-                                    {mode !== 'compare' && <p className="text-sm text-secondary-500 mb-4">{uniAName}</p>}
+                                    {mode !== 'compare' && <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{uniAName}</p>}
 
                                     <div className="grid grid-cols-2 gap-4 mb-6">
                                         <div className="bg-red-50 rounded-lg p-4 text-center">
@@ -222,7 +224,7 @@ export default function ROICalculatorPage() {
                                     <h3 className="font-semibold mb-3">5-Year Projection</h3>
                                     <div className="overflow-x-auto">
                                         <table className="w-full text-sm">
-                                            <thead className="bg-secondary-50">
+                                            <thead style={{ backgroundColor: 'var(--glass-bg)' }}>
                                                 <tr>
                                                     <th className="px-3 py-2 text-left">Year</th>
                                                     <th className="px-3 py-2 text-right">Net Earnings</th>
@@ -282,7 +284,7 @@ export default function ROICalculatorPage() {
                                         <h3 className="font-semibold mb-3">5-Year Projection</h3>
                                         <div className="overflow-x-auto">
                                             <table className="w-full text-sm">
-                                                <thead className="bg-secondary-50">
+                                                <thead style={{ backgroundColor: 'var(--glass-bg)' }}>
                                                     <tr>
                                                         <th className="px-3 py-2 text-left">Year</th>
                                                         <th className="px-3 py-2 text-right">Net Earnings</th>

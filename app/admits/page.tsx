@@ -35,15 +35,15 @@ export default function AdmitsPage() {
     const countries = ['USA', 'UK', 'Canada', 'Australia', 'Germany', 'Singapore'];
 
     return (
-        <div className="min-h-screen bg-secondary-50">
+        <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Navbar />
 
             <div className="pt-24 pb-12">
                 <div className="container-custom">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
                         <div>
-                            <h1 className="text-4xl font-bold text-secondary-900 mb-2">Verified Admits</h1>
-                            <p className="text-secondary-600">Real admit data from students with verified profiles</p>
+                            <h1 className="text-4xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Verified Admits</h1>
+                            <p style={{ color: 'var(--text-secondary)' }}>Real admit data from students with verified profiles</p>
                         </div>
                         <Link href="/admits/upload" className="btn btn-primary">
                             📤 Share Your Admit
@@ -83,8 +83,8 @@ export default function AdmitsPage() {
                         <div className="flex justify-center py-12"><LoadingSpinner size="lg" /></div>
                     ) : admits.length === 0 ? (
                         <div className="card text-center py-16">
-                            <p className="text-xl font-semibold text-secondary-600 mb-2">No admits found</p>
-                            <p className="text-secondary-500 mb-6">Be the first to share your admit experience!</p>
+                            <p className="text-xl font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>No admits found</p>
+                            <p className="mb-6" style={{ color: 'var(--text-muted)' }}>Be the first to share your admit experience!</p>
                             <Link href="/admits/upload" className="btn btn-primary">Share Your Admit</Link>
                         </div>
                     ) : (
@@ -93,8 +93,8 @@ export default function AdmitsPage() {
                                 <div key={admit.id} className="card hover:shadow-lg transition-shadow">
                                     <div className="flex items-start justify-between mb-3">
                                         <div>
-                                            <h3 className="font-semibold text-secondary-900">{admit.university_name}</h3>
-                                            <p className="text-sm text-secondary-500">{admit.university_country}</p>
+                                            <h3 className="font-semibold" style={{ color: 'var(--text-primary)' }}>{admit.university_name}</h3>
+                                            <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{admit.university_country}</p>
                                         </div>
                                         <span className={`px-3 py-1 rounded-full text-xs font-bold ${admit.admit_type === 'admit' ? 'bg-green-100 text-green-700' :
                                             admit.admit_type === 'reject' ? 'bg-red-100 text-red-700' :
@@ -106,25 +106,25 @@ export default function AdmitsPage() {
                                     </div>
 
                                     {admit.program && (
-                                        <p className="text-sm text-secondary-600 mb-3">{admit.program}</p>
+                                        <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>{admit.program}</p>
                                     )}
 
                                     <div className="grid grid-cols-2 gap-3 text-sm">
                                         {admit.cgpa && (
-                                            <div className="bg-secondary-50 rounded-lg p-2 text-center">
-                                                <p className="text-secondary-500 text-xs">CGPA</p>
+                                            <div className="rounded-lg p-2 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>CGPA</p>
                                                 <p className="font-bold">{admit.cgpa}</p>
                                             </div>
                                         )}
                                         {admit.ielts && (
-                                            <div className="bg-secondary-50 rounded-lg p-2 text-center">
-                                                <p className="text-secondary-500 text-xs">IELTS</p>
+                                            <div className="rounded-lg p-2 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>IELTS</p>
                                                 <p className="font-bold">{admit.ielts}</p>
                                             </div>
                                         )}
                                         {admit.gre && (
-                                            <div className="bg-secondary-50 rounded-lg p-2 text-center">
-                                                <p className="text-secondary-500 text-xs">GRE</p>
+                                            <div className="rounded-lg p-2 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>GRE</p>
                                                 <p className="font-bold">{admit.gre}</p>
                                             </div>
                                         )}

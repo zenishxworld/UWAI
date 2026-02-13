@@ -48,21 +48,21 @@ export default function UniversitiesPage() {
     const countries = ['USA', 'UK', 'Canada', 'Australia', 'Germany', 'Singapore', 'Netherlands', 'Ireland'];
 
     return (
-        <div className="min-h-screen bg-secondary-50">
+        <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Navbar />
 
             <div className="pt-24 pb-12">
                 <div className="container-custom">
                     <div className="mb-8">
-                        <h1 className="text-4xl font-bold text-secondary-900 mb-2">Find Universities</h1>
-                        <p className="text-secondary-600">Browse and compare universities with personalized match scores</p>
+                        <h1 className="text-4xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>Find Universities</h1>
+                        <p style={{ color: 'var(--text-secondary)' }}>Browse and compare universities with personalized match scores</p>
                     </div>
 
                     {/* Filters */}
                     <div className="card mb-8">
                         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <div className="md:col-span-2">
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">Search</label>
+                                <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>Search</label>
                                 <input
                                     type="text"
                                     className="input"
@@ -72,7 +72,7 @@ export default function UniversitiesPage() {
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-secondary-700 mb-2">Country</label>
+                                <label className="block text-sm font-medium mb-2" style={{ color: 'var(--text-secondary)' }}>Country</label>
                                 <select className="input" value={filterCountry} onChange={(e) => setFilterCountry(e.target.value)}>
                                     <option value="">All Countries</option>
                                     {countries.map(c => <option key={c} value={c}>{c}</option>)}
@@ -92,14 +92,14 @@ export default function UniversitiesPage() {
                     </div>
 
                     {/* Results Count */}
-                    <p className="text-sm text-secondary-500 mb-4">{filtered.length} universities found</p>
+                    <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{filtered.length} universities found</p>
 
                     {/* University Grid */}
                     {loading ? (
                         <div className="flex justify-center py-12"><LoadingSpinner size="lg" /></div>
                     ) : filtered.length === 0 ? (
                         <div className="card text-center py-12">
-                            <p className="text-lg text-secondary-600">No universities match your criteria</p>
+                            <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>No universities match your criteria</p>
                             <button onClick={() => { setSearch(''); setFilterCountry(''); setMaxCost(''); }} className="btn btn-primary mt-4">
                                 Clear Filters
                             </button>
@@ -110,10 +110,10 @@ export default function UniversitiesPage() {
                                 <Link key={uni.id} href={`/universities/${uni.id}`} className="card hover:shadow-lg transition-all hover:-translate-y-1 group">
                                     <div className="flex items-start justify-between mb-3">
                                         <div className="flex-1 min-w-0">
-                                            <h3 className="font-semibold text-secondary-900 group-hover:text-primary-600 transition-colors truncate">
+                                            <h3 className="font-semibold group-hover:opacity-80 transition-all truncate" style={{ color: 'var(--text-primary)' }}>
                                                 {uni.name}
                                             </h3>
-                                            <p className="text-sm text-secondary-500">{uni.city}, {uni.country}</p>
+                                            <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{uni.city}, {uni.country}</p>
                                         </div>
                                         {uni.matchScore && (
                                             <ScoreCircle score={uni.matchScore.overall} size="sm" />
@@ -121,11 +121,11 @@ export default function UniversitiesPage() {
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-3 mb-3">
-                                        <div className="bg-secondary-50 rounded-lg p-2 text-center">
-                                            <p className="text-xs text-secondary-400">Tuition</p>
-                                            <p className="font-bold text-secondary-900 text-sm">${uni.tuition_fee?.toLocaleString()}</p>
+                                        <div className="rounded-lg p-2 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
+                                            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Tuition</p>
+                                            <p className="font-bold text-sm" style={{ color: 'var(--text-primary)' }}>${uni.tuition_fee?.toLocaleString()}</p>
                                         </div>
-                                        <div className="bg-secondary-50 rounded-lg p-2 text-center">
+                                        <div className="rounded-lg p-2 text-center" style={{ backgroundColor: 'var(--glass-bg)' }}>
                                             <p className="text-xs text-secondary-400">Avg Salary</p>
                                             <p className="font-bold text-green-600 text-sm">${uni.average_salary?.toLocaleString()}</p>
                                         </div>

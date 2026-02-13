@@ -45,6 +45,7 @@ export default function Navbar() {
     };
 
     const navLinks = [
+        { href: '/explore', label: 'Explore' },
         { href: '/universities', label: 'Universities' },
         { href: '/roi-calculator', label: 'ROI Calculator' },
         { href: '/admits', label: 'Admits' },
@@ -59,8 +60,8 @@ export default function Navbar() {
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                ? 'glass-strong shadow-soft py-2'
-                : 'bg-transparent py-4'
+            ? 'glass-strong shadow-soft py-2'
+            : 'bg-transparent py-4'
             }`}>
             <div className="container-custom">
                 <div className="flex items-center justify-between">
@@ -81,8 +82,8 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${pathname === link.href
-                                        ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
-                                        : 'hover:bg-surface-100 dark:hover:bg-surface-800'
+                                    ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
+                                    : 'hover:bg-surface-100 dark:hover:bg-surface-800'
                                     }`}
                                 style={pathname !== link.href ? { color: 'var(--text-secondary)' } : {}}
                             >
@@ -117,8 +118,8 @@ export default function Navbar() {
                                         key={link.href}
                                         href={link.href}
                                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${pathname === link.href
-                                                ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
-                                                : 'hover:bg-surface-100 dark:hover:bg-surface-800'
+                                            ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
+                                            : 'hover:bg-surface-100 dark:hover:bg-surface-800'
                                             }`}
                                         style={pathname !== link.href ? { color: 'var(--text-secondary)' } : {}}
                                     >
@@ -189,8 +190,8 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${pathname === link.href
-                                        ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
-                                        : ''
+                                    ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
+                                    : ''
                                     }`}
                                 style={pathname !== link.href ? { color: 'var(--text-secondary)' } : {}}
                                 onClick={() => setMenuOpen(false)}
@@ -203,8 +204,8 @@ export default function Navbar() {
                                 key={link.href}
                                 href={link.href}
                                 className={`block px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${pathname === link.href
-                                        ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
-                                        : ''
+                                    ? 'bg-primary-600/10 text-primary-600 dark:text-primary-400'
+                                    : ''
                                     }`}
                                 style={pathname !== link.href ? { color: 'var(--text-secondary)' } : {}}
                                 onClick={() => setMenuOpen(false)}
