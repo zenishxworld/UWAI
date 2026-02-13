@@ -4,8 +4,8 @@ export default function Footer() {
     return (
         <footer style={{ backgroundColor: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)' }}>
             <div className="container-custom py-16">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
-                    <div className="md:col-span-2">
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-12">
+                    <div className="col-span-2 md:col-span-2">
                         <div className="flex items-center space-x-2.5 mb-5">
                             <div className="w-9 h-9 bg-gradient-to-br from-primary-600 to-primary-400 rounded-xl flex items-center justify-center">
                                 <span className="text-white font-bold text-sm">U</span>

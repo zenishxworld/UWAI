@@ -83,14 +83,14 @@ export default function ROICalculator() {
         <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Navbar />
 
-            <div className="pt-24 pb-12">
+            <div className="pt-20 md:pt-24 pb-12">
                 <div className="container-custom">
-                    <div className="mb-8">
-                        <h1 className="text-4xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>ROI Calculator</h1>
-                        <p style={{ color: 'var(--text-secondary)' }}>Compare financial outcomes with break-even analysis and 5-year projections</p>
+                    <div className="mb-6 md:mb-8">
+                        <h1 className="text-2xl md:text-4xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>ROI Calculator</h1>
+                        <p className="text-sm md:text-base" style={{ color: 'var(--text-secondary)' }}>Compare financial outcomes with break-even analysis and 5-year projections</p>
                     </div>
 
-                    <div className="flex gap-2 mb-6">
+                    <div className="flex gap-2 mb-6 overflow-x-auto">
                         <button onClick={() => { setMode('single'); setResult(null); }}
                             className={`px-6 py-2 rounded-lg font-medium transition-all ${mode === 'single' ? 'bg-primary-600 text-white' : ''}`}
                             style={mode !== 'single' ? { backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', border: '1px solid var(--border-color)' } : undefined}>
@@ -190,7 +190,7 @@ function ROICard({ name, subtitle, roi, formatINR }: { name: string; subtitle?: 
         <div className="card">
             <h2 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>{name}</h2>
             {subtitle && <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>{subtitle}</p>}
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-6">
                 <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4 text-center">
                     <p className="text-xs text-red-600 dark:text-red-400 mb-1">Total Investment</p>
                     <p className="text-xl font-bold text-red-700 dark:text-red-300">{formatINR(roi.totalCost)}</p>

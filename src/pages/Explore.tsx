@@ -76,7 +76,7 @@ export default function Explore() {
             <Navbar />
 
             {/* Hero */}
-            <section className="relative pt-32 pb-16 md:pt-40 md:pb-20 bg-mesh overflow-hidden">
+            <section className="relative pt-24 pb-10 md:pt-40 md:pb-20 bg-mesh overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-indigo-500/20 to-teal-500/20 rounded-full blur-3xl" />
                     <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-purple-500/15 to-indigo-500/15 rounded-full blur-3xl" />
@@ -88,7 +88,7 @@ export default function Explore() {
                             <span>🌍</span>
                             <span>{countries.reduce((sum, c) => sum + c.count, 0)}+ Universities • {countries.length} Countries</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4" style={{ color: 'var(--text-primary)' }}>
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4" style={{ color: 'var(--text-primary)' }}>
                             Explore <span className="bg-gradient-to-r from-indigo-500 to-teal-400 bg-clip-text text-transparent">Universities</span>
                         </h1>
                         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8" style={{ color: 'var(--text-secondary)' }}>
@@ -112,39 +112,42 @@ export default function Explore() {
             </section>
 
             {/* Filters */}
-            <section className="sticky top-16 z-30 py-4" style={{ backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)', backdropFilter: 'blur(16px)' }}>
+            <section className="sticky top-14 z-30 py-3 md:py-4" style={{ backgroundColor: 'var(--bg-primary)', borderBottom: '1px solid var(--border-color)', backdropFilter: 'blur(16px)' }}>
                 <div className="container-custom">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+                    <div className="flex flex-col gap-3">
+                        {/* Country pills - scrollable on mobile */}
+                        <div className="flex items-center gap-2 overflow-x-auto pb-1 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">
                             <button onClick={() => setSelectedCountry(null)}
-                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${!selectedCountry ? 'text-white shadow-lg' : 'hover:opacity-80'}`}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${!selectedCountry ? 'text-white shadow-lg' : 'hover:opacity-80'}`}
                                 style={!selectedCountry ? { background: 'linear-gradient(135deg, var(--primary, #4f46e5), var(--accent, #14b8a6))' } : { backgroundColor: 'var(--glass-bg)', border: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
                                 🌍 All
                             </button>
                             {countries.map(c => (
                                 <button key={c.code} onClick={() => setSelectedCountry(c.code)}
-                                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${selectedCountry === c.code ? 'text-white shadow-lg' : 'hover:opacity-80'}`}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap flex-shrink-0 ${selectedCountry === c.code ? 'text-white shadow-lg' : 'hover:opacity-80'}`}
                                     style={selectedCountry === c.code ? { background: 'linear-gradient(135deg, var(--primary, #4f46e5), var(--accent, #14b8a6))' } : { backgroundColor: 'var(--glass-bg)', border: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
                                     {c.flag} {c.name} <span className="text-xs opacity-70">({c.count})</span>
                                 </button>
                             ))}
                         </div>
-                        <div className="flex items-center gap-2">
+                        {/* Filters row */}
+                        <div className="flex items-center gap-2 flex-wrap">
                             <select value={greFilter} onChange={(e) => setGreFilter(e.target.value)}
-                                className="px-3 py-2 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                                className="px-3 py-2 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50 flex-1 min-w-[120px] max-w-[160px]"
                                 style={{ backgroundColor: 'var(--glass-bg)', border: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
                                 <option value="">GRE: Any</option>
                                 <option value="no">No GRE</option>
                                 <option value="yes">GRE Required</option>
                             </select>
                             <select value={visaFilter} onChange={(e) => setVisaFilter(e.target.value)}
-                                className="px-3 py-2 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
+                                className="px-3 py-2 rounded-lg text-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500/50 flex-1 min-w-[120px] max-w-[160px]"
                                 style={{ backgroundColor: 'var(--glass-bg)', border: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>
                                 <option value="">Visa: Any</option>
                                 <option value="low">Low Risk</option>
                                 <option value="medium">Medium Risk</option>
                             </select>
-                            <div className="flex rounded-lg overflow-hidden" style={{ border: '1px solid var(--border-color)' }}>
+                            {/* Grid/Table toggle - hidden on mobile since table doesn't work well */}
+                            <div className="hidden md:flex rounded-lg overflow-hidden ml-auto" style={{ border: '1px solid var(--border-color)' }}>
                                 <button onClick={() => setViewMode('grid')} className={`p-2 transition-all ${viewMode === 'grid' ? 'text-white' : ''}`}
                                     style={viewMode === 'grid' ? { background: 'linear-gradient(135deg, #4f46e5, #14b8a6)' } : { backgroundColor: 'var(--glass-bg)', color: 'var(--text-secondary)' }}>
                                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>

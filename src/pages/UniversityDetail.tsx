@@ -57,12 +57,12 @@ export default function UniversityDetail() {
         <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Navbar />
 
-            <section className="relative pt-28 pb-10 bg-mesh overflow-hidden">
+            <section className="relative pt-20 pb-8 md:pt-28 md:pb-10 bg-mesh overflow-hidden">
                 <div className="absolute inset-0 overflow-hidden">
                     <div className="absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br from-indigo-500/20 to-teal-500/20 rounded-full blur-3xl" />
                 </div>
                 <div className="container-custom relative z-10">
-                    <div className="flex items-center gap-2 text-sm mb-4" style={{ color: 'var(--text-tertiary)' }}>
+                    <div className="flex items-center gap-2 text-xs md:text-sm mb-4 flex-wrap" style={{ color: 'var(--text-tertiary)' }}>
                         <Link to="/explore" className="hover:text-indigo-400 transition-colors">Explore</Link>
                         <span>/</span>
                         <Link to={`/explore?country=${country}`} className="hover:text-indigo-400 transition-colors capitalize">
@@ -79,10 +79,10 @@ export default function UniversityDetail() {
                                 <span className={`text-sm font-medium px-3 py-1 rounded-full border ${getVisaBg(uni.visa_risk)} ${getVisaColor(uni.visa_risk)}`}>{uni.visa_risk} Visa Risk</span>
                                 <span className="text-sm px-3 py-1 rounded-full" style={{ backgroundColor: 'var(--glass-bg)', border: '1px solid var(--border-color)', color: 'var(--text-secondary)' }}>{uni.type}</span>
                             </div>
-                            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-2" style={{ color: 'var(--text-primary)' }}>{uni.university_name}</h1>
+                            <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-2" style={{ color: 'var(--text-primary)' }}>{uni.university_name}</h1>
                             <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>📍 {uni.city} • {countryFlags[country]} {countryNames[country] || country}</p>
                         </div>
-                        <div className="flex gap-3 flex-shrink-0">
+                        <div className="flex gap-2 md:gap-3 flex-shrink-0 flex-wrap">
                             {uni.website && (
                                 <a href={uni.website} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 rounded-xl font-semibold text-white transition-all hover:scale-105 text-sm" style={{ background: 'linear-gradient(135deg, #4f46e5, #14b8a6)' }}>🔗 Visit Website</a>
                             )}
