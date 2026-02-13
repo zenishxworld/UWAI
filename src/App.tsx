@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import UniversityDetail from "./pages/UniversityDetail";
@@ -7,19 +8,24 @@ import ROICalculator from "./pages/ROICalculator";
 import Disclaimer from "./pages/Disclaimer";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import PageTransition from "./components/PageTransition";
 
 function App(): JSX.Element {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/explore" element={<Explore />} />
-      <Route path="/explore/:country/:slug" element={<UniversityDetail />} />
-      <Route path="/transparency" element={<Transparency />} />
-      <Route path="/roi-calculator" element={<ROICalculator />} />
-      <Route path="/disclaimer" element={<Disclaimer />} />
-      <Route path="/privacy" element={<Privacy />} />
-      <Route path="/terms" element={<Terms />} />
-    </Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/explore" element={<PageTransition><Explore /></PageTransition>} />
+        <Route path="/explore/:country/:slug" element={<PageTransition><UniversityDetail /></PageTransition>} />
+        <Route path="/transparency" element={<PageTransition><Transparency /></PageTransition>} />
+        <Route path="/roi-calculator" element={<PageTransition><ROICalculator /></PageTransition>} />
+        <Route path="/disclaimer" element={<PageTransition><Disclaimer /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+        <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
